@@ -12,7 +12,7 @@ public class EquipamentoReceiver {
 private CountDownLatch latch = new CountDownLatch(1);
 	
 	public void receiveMessage(Proposta p) throws InterruptedException {
-		Thread.sleep(3000);
+		//Thread.sleep(3000);
 		Random rand = new Random();
 		p.setNumeroLogico(rand.nextInt(999999));
 		p.setSolucaoCaptura("LIO");

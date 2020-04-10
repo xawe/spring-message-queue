@@ -26,13 +26,13 @@ public class Runner implements CommandLineRunner{
 	    System.out.println("Sending message...");
 	    Random rand = new Random(); 
 
-	    for (int i = 0; i < 100; i++) {	    	
+	    for (int i = 0; i < 100000; i++) {	    	
 	    	Proposta p =  new Proposta();
 	    	p.setNumeroProposta(rand.nextInt(999999999));
 	    	p.setId(i);
 	    	rabbitTemplate.convertAndSend(LabApplication.topicExchangeName, "foo.bar.baz", p);
-	    	Thread.sleep(400);
-		    //receiver.getLatch().await(30000, TimeUnit.MILLISECONDS);
+	    	//Thread.sleep(400);
+		    receiver.getLatch().await(0, TimeUnit.MILLISECONDS);
 		}
 	    
 	  }
